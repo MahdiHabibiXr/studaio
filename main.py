@@ -208,7 +208,7 @@ async def add_task(client, message):
     task1.delay('791927771')
     await message.reply('task 1 started')
     task2.delay('791927771')
-    #await message.reply('task 2 started')
+    await message.reply('task 2 started')
 
 
 
