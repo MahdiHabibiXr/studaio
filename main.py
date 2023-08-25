@@ -197,8 +197,8 @@ async def imagine(client, message):
 
                 for i in r :
                     await client.send_photo(chat_id, i)
-            except:
-                await client.send_message(admin, 'error in connection')
+            except Exception as error:
+                await client.send_message(admin, error)
             
         else:
             #should use man or woman in this

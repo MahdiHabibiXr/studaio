@@ -4,7 +4,7 @@ import base64, io, requests, json
 import os
 from datetime import datetime, date
 import time
-# from plugins import url
+from plugins import query
 
 def image_to_base64(image_path):
     with open(image_path, "rb") as image_file:
@@ -83,7 +83,7 @@ def generate_image(prompt, image_input= '',negative_prompt = 'NSFW, no face, inv
         # ]
     }
 
-    url = 'http://127.0.0.1:7923'
+    url = query.get('url')
     resp = requests.post(url=f'{url}/sdapi/v1/txt2img', json=payload)
     r = resp.json()
 
