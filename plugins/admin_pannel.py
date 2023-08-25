@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 # from pyrogram.enums.chat_action
-from plugins import query, admin
+from plugins import query, admin, api_url
 
 
 @Client.on_message(filters.private & filters.user(admin) & filters.regex('activate_'))
@@ -16,6 +16,13 @@ async def add_code(client, message):
     codes = message.text.split(' ')[1]
     for code in codes.split(','):
         query.hset('inv_codes', code, 'True')
+        await message.reply(code + ' added to database')
+
+@Client.on_message(filters.private & filters.user(admin) & filters.command('set_url'))
+async def add_code(client, message):
+    url_msg = message.text.split(' ')[1]
+    query.set('url', url_msg)
+    await message.reply('API url changed to : ' + url_msg)
 
 @Client.on_message(filters.private & filters.user(admin) & filters.command('help'))
 async def help_message(client, message):

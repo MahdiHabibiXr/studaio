@@ -4,6 +4,7 @@ import base64, io, requests, json
 import os
 from datetime import datetime, date
 import time
+# from plugins import url
 
 def image_to_base64(image_path):
     with open(image_path, "rb") as image_file:

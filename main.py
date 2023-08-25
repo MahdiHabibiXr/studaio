@@ -106,6 +106,7 @@ async def signUp(client, message):
 async def newImage(client, message):
     chat_id = message.chat.id
 
+    #check if user is active!!!!
     #is user submitted he/she's own photo?
     if(query.hget(chat_id, 'photo') != None):
         #submitted photo before
@@ -147,7 +148,7 @@ async def savePhoto(client, message):
         if(query.hget(chat_id, 'photo') != None) :
             file = await client.download_media(message.photo.file_id, file_name = f'input_images/{chat_id}/')
             query.hset(chat_id, 'photo', file)
-            await client.send_photo(chat_id, file, caption='✅عکس ورودیت با موفقیت ثبت شد')
+            await client.send_photo(chat_id, query.hget(chat_id,'photo'), caption='✅عکس ورودیت با موفقیت ثبت شد')
 
         # msg = '😌حالا وقتشه که عکستو بسازی، لطفا از بین استایلهایی که برات ارسال میشه، یکی رو انتخاب کن و با کلیک کردن روی دستور هر عکس، به ربات بگو که میخوای عکست تو چه سبکی ساخته بشه :'
         # await message.reply(msg)
