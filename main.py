@@ -10,11 +10,11 @@ plugins = dict(
     root = "plugins"
 )
 
-# bot = Client('mahdi',api_id=863373,api_hash='c9f8495ddd20615835d3fd073233a3f6')
-bot = Client(
-    'mahdi',
-    plugins=plugins
-    )
+bot = Client('mahdi',api_id=863373,api_hash='c9f8495ddd20615835d3fd073233a3f6',plugins=plugins )
+# bot = Client(
+#     'mahdi',
+#     plugins=plugins
+#     )
 
 
 #/START
