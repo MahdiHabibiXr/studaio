@@ -23,7 +23,7 @@ async def test(client, message):
     chat_id = message.chat.id
 
     #Add new user to db
-    if(not query.exists(chat_id)):
+    if(not query.hexists(chat_id)):
         #check if user does not exists
         data = {
             'name' : message.from_user.first_name,
