@@ -11,6 +11,12 @@ async def activate_user(client, message):
 
     await message.reply(user_to_activeate)
 
+@Client.on_message(filters.private & filters.user(admin) & filters.command('add_code'))
+async def add_code(client, message):
+    codes = message.text.split(' ')[1]
+    for code in codes.split(','):
+        query.hset('inv_codes', code, 'True')
+
 @Client.on_message(filters.private & filters.user(admin) & filters.command('help'))
 async def help_message(client, message):
     chat_id = message.chat.id
