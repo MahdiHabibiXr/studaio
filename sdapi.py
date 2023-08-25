@@ -25,9 +25,9 @@ def save_encoded_image(b64_image, output_path):
         f.close()
 
 
-def generate_image(prompt, image_input= '', batch_size = 1, enable_roop = True, output_folder = 'outputdata/', enable_upscale = False, step = 25):
-
-    negative_prompt = 'Watermark, Text, censored, deformed, bad anatomy, disfigured, poorly drawn face, mutated, extra limb, ugly, poorly drawn hands, missing limb, floating limbs, disconnected limbs, disconnected head, malformed hands, long neck, mutated hands and fingers, bad hands, missing fingers, cropped, worst quality, low quality, mutation, poorly drawn, huge calf, bad hands, fused hand, missing hand, disappearing arms, disappearing thigh, disappearing calf, disappearing legs, missing fingers, fused fingers, abnormal eye proportion, Abnormal hands, abnormal legs, abnormal feet,  abnormal fingers'
+def generate_image(prompt, image_input= '',negative_prompt = 'NSFW, no face, invisible face', batch_size = 1, enable_roop = True, output_folder = 'outputdata/', enable_upscale = False, step = 25):
+    # negative_prompt = 'NSFW, no face, invisible face'
+    # negative_prompt = 'Watermark, Text, censored, deformed, bad anatomy, disfigured, poorly drawn face, mutated, extra limb, ugly, poorly drawn hands, missing limb, floating limbs, disconnected limbs, disconnected head, malformed hands, long neck, mutated hands and fingers, bad hands, missing fingers, cropped, worst quality, low quality, mutation, poorly drawn, huge calf, bad hands, fused hand, missing hand, disappearing arms, disappearing thigh, disappearing calf, disappearing legs, missing fingers, fused fingers, abnormal eye proportion, Abnormal hands, abnormal legs, abnormal feet,  abnormal fingers'
     steps = step
 
     file_input = image_input                             # the face to swap

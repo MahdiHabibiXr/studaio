@@ -1,0 +1,5 @@
+pyrogram
+pyromod
+requests
+celery
+pillow
