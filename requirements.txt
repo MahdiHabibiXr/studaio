@@ -4,3 +4,4 @@ pyromod
 requests
 celery
 pillow
+tgcrypto
