@@ -82,7 +82,7 @@ def generate_image(prompt, image_input= '',negative_prompt = 'NSFW, no face, inv
         # ]
     }
 
-    url = 'http://127.0.0.1:7860'
+    url = 'http://127.0.0.1:7923'
     resp = requests.post(url=f'{url}/sdapi/v1/txt2img', json=payload)
     r = resp.json()
 
