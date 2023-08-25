@@ -14,12 +14,13 @@ async def activate_user(client, message):
 @Client.on_message(filters.private & filters.user(admin) & filters.command('add_code'))
 async def add_code(client, message):
     codes = message.text.split(' ')[1]
+
     for code in codes.split(','):
         query.hset('inv_codes', code, 'True')
         await message.reply(code + ' added to database')
 
 @Client.on_message(filters.private & filters.user(admin) & filters.command('set_url'))
-async def add_code(client, message):
+async def set_url(client, message):
     url_msg = message.text.split(' ')[1]
     query.set('url', url_msg)
     await message.reply('API url changed to : ' + url_msg)

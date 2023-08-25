@@ -1,4 +1,8 @@
 __pycache__
 env
-plugins\__pycache__
+**/plugins/__pycache__
 mahdi.session
+input_images
+outputdata
+mahdi.session-journal
+downloads

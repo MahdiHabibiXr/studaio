@@ -10,11 +10,11 @@ plugins = dict(
     root = "plugins"
 )
 
-bot = Client('mahdi',api_id=863373,api_hash='c9f8495ddd20615835d3fd073233a3f6',plugins=plugins )
-# bot = Client(
-#     'mahdi',
-#     plugins=plugins
-#     )
+# bot = Client('mahdi',api_id=863373,api_hash='c9f8495ddd20615835d3fd073233a3f6',plugins=plugins )
+bot = Client(
+    'mahdi',
+    plugins=plugins
+    )
 
 
 #/START
@@ -24,18 +24,11 @@ async def test_bot(client, message):
     await message.reply('im upppp')
 
 @bot.on_message(filters.command('start') & filters.private)
-async def test(client, message):
+async def start_bot(client, message):
     chat_id = message.chat.id
 
     #Add new user to db
     if(query.hgetall(chat_id) == {}):
-        #check if user does not exists
-        # data = {
-        #     'name' : message.from_user.first_name,
-        #     'username' : message.from_user.username,
-        #     'active' : 'False',
-        # }
-        #query to db [key: chat_id , data{name,username,active}]
         query.hset(chat_id,'name', message.from_user.first_name)
         query.hset(chat_id,'username',message.from_user.username)
         query.hset(chat_id,'active', 'False')
@@ -83,7 +76,6 @@ async def signUp(client, message):
     chat_id = message.chat.id
 
     #check if invite is valid
-    
     if(query.hget('inv_codes', input_code) == 'True'):
         #inv_code is true
         if(query.hget(chat_id, 'active') == 'False'):
@@ -101,6 +93,7 @@ async def signUp(client, message):
             msg = '😁قابلیت های ربات برای شما فعاله دیگه، با دستور /new_image میتونی عکس جدید بسازی'
 
     await message.reply(msg)
+
 
 @bot.on_message(filters.private & filters.command('new_image'))
 async def newImage(client, message):
@@ -143,15 +136,16 @@ async def newImage(client, message):
 @bot.on_message(filters.private & filters.photo)
 async def savePhoto(client, message):
     chat_id = message.chat.id
+    # print(message.photo.file_id)
+    # print(await client.download_media(message.photo.file_id))
+
     #Is it active user?
     if(query.hget(chat_id, 'active') == 'True'):
-        if(query.hget(chat_id, 'photo') != None) :
+        if(query.hget(chat_id, 'photo') == None) :
+            print(message.photo.file_id)
             file = await client.download_media(message.photo.file_id, file_name = f'input_images/{chat_id}/')
             query.hset(chat_id, 'photo', file)
             await client.send_photo(chat_id, query.hget(chat_id,'photo'), caption='✅عکس ورودیت با موفقیت ثبت شد')
-
-        # msg = '😌حالا وقتشه که عکستو بسازی، لطفا از بین استایلهایی که برات ارسال میشه، یکی رو انتخاب کن و با کلیک کردن روی دستور هر عکس، به ربات بگو که میخوای عکست تو چه سبکی ساخته بشه :'
-        # await message.reply(msg)
 
         msg = '''
 ☺️خب حالا وقت ساختنه
@@ -222,70 +216,6 @@ async def add_task(client, message):
 
 
 bot.run()
-
-# @bot.on_message(filters.private & filters.photo)
-# async def savePhoto(client, message):
-#     chat_id = message.chat.id
-#     #Is it active user?
-#     if(query.hget(chat_id, 'active') == 'True'):
-#         file = await client.download_media(message.photo.file_id, file_name = f'input_images/{chat_id}/')
-#         query.hset(chat_id, 'photo', file)
-#         await client.send_photo(chat_id, file, caption='✅عکس ورودیت با موفقیت ثبت شد')
-        
-#         msg = '''
-# 🔻لطفا جنسیتت رو مشخص کن :
-# '''
-#         keyboard = ikb([
-#             [
-#                 ('مرد', 'gender_male'),
-#                 ('زن', 'gender_female')
-#             ]
-#         ])
-#         await client.send_message(chat_id, msg, reply_markup = keyboard)
-
-# @bot.on_callback_query()
-# async def get_callback(client, callback_query):
-#     chat_id = callback_query.message.chat.id
-#     query_data = callback_query.data
-
-#     if('gender_' in query_data):
-#         gender = query_data.split('_')[1]
-#         query.hset(f'img:{chat_id}' , 'gender' , gender)
-
-#         msg = 'رده سنی ات رو مشخص کن :'
-#         keyboard = ikb([
-#             [
-#                 ('زیر 20', 'age_1'),
-#                 ('20 تا 40', 'age_2'),
-#                 ('بالای 60', 'age_3')
-#             ]
-#         ])
-
-#         await client.send_message(chat_id, reply_markup = keyboard)
-
-#     elif('age_' in query_data):
-#         age_input = query_data.split('_')
-#         if(age_input == '1') : age = 15
-#         elif(age_input == '2') : age = 25
-#         elif(age_input == '3') : age = 65
-
-#         query.hset(f'img:{chat_id}' , 'age' , age)
-
-#         msg = 'مدل مویی که میخوای توی عکس داشته باشی رو انتخاب کن:'
-#         keyboard = ikb([
-#             [
-#                 ('بلند', 'hair_long'),
-#                 ('کوتاه', 'hair_short'),
-#                 ('کچل', 'hair_bald'),
-#                 ('فرفری', 'hair_curly')
-#             ]
-#         ])
-
-#         await client.send_message(chat_id, reply_markup = keyboard)
-
-
-
-
 
 
 
