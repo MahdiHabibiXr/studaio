@@ -18,20 +18,28 @@ bot = Client('mahdi',api_id=863373,api_hash='c9f8495ddd20615835d3fd073233a3f6',p
 
 
 #/START
+
+@bot.on_message(filters.command('test') & filters.private)
+async def test_bot(client, message):
+    await message.reply('im upppp')
+
 @bot.on_message(filters.command('start') & filters.private)
 async def test(client, message):
     chat_id = message.chat.id
 
     #Add new user to db
-    if(not query.hexists(chat_id)):
+    if(query.hgetall(chat_id) == {}):
         #check if user does not exists
-        data = {
-            'name' : message.from_user.first_name,
-            'username' : message.from_user.username,
-            'active' : 'False',
-        }
+        # data = {
+        #     'name' : message.from_user.first_name,
+        #     'username' : message.from_user.username,
+        #     'active' : 'False',
+        # }
         #query to db [key: chat_id , data{name,username,active}]
-        query.hset(chat_id, mapping = data)
+        query.hset(chat_id,'name', message.from_user.first_name)
+        query.hset(chat_id,'username',message.from_user.username)
+        query.hset(chat_id,'active', 'False')
+
         msg = f'''سلام **{query.hget(chat_id,'name')}**، خوش اومدی👋
 این ربات یه نسخه دمو از **{name}** هست که بهت کمک می‌کنه که بی‌نهایت عکس از خودت بسازی
 👈نحوه کار این ربات اینجوریه که اول یه عکس از خودت میفرستی و بعد با دستوراتی که وجود داره، به کمک هوش مصنوعی عکس‌هایی با صورت خودت ساخته میشه
