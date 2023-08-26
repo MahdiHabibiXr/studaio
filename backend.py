@@ -55,9 +55,9 @@ async def task_run(client,message):
             task = task.split(':')
             style = task[2]
             user = task[1]
-            # photo = task[3]
-            # if(len(task) == 4) :
-            photo = task[3] +':'+ task[4]
+            photo = task[3]
+            # # if(len(task) == 4) :
+            # photo = task[3] +':'+ task[4]
 
             gender = query.hget(user,'gender')
             query.hset(user,'progress', 'False')
