@@ -42,3 +42,9 @@ async def set_active(client, message):
 async def off_run(client, message):
     query.set('autopilot','False')
     message.reply('AutoPilot Off')
+
+@Client.on_message(filters.private & filters.user(admin) & filters.command('on_run'))
+async def on_run(client, message):
+    query.set('autopilot','True')
+    message.reply('AutoPilot On')
+
