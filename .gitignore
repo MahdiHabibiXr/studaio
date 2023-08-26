@@ -2,6 +2,9 @@ __pycache__
 env
 **/plugins/__pycache__
 mahdi.session
-input_images
 mahdi.session-journal
+mahdi2.session
+mahdi2.session-journal
 downloads
+backend
+backend.py
