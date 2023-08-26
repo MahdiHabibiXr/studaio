@@ -41,8 +41,8 @@ styles = [
 
 @bot.on_message(filters.private & filters.regex('run_auto'))
 async def task_run(client,message):
-    await message.reply('AutoPilot ON')
-
+    # await message.reply('AutoPilot ON')
+    
     while(True):
         if(query.get('autopilot') == 'False') :
             print('BREAKING LOOP') 
@@ -88,8 +88,8 @@ async def task_run(client,message):
             except Exception as error:
                 print(error)
 
-            print('sleep for 5 sec')
-            time.sleep(5)
+            # print('sleep for 5 sec')
+            # time.sleep(5)
             # await message.reply('done task ' + task)
 
 # @bot.on_message(filters.private & filters.regex('run_auto_off'))
