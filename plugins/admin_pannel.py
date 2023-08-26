@@ -48,3 +48,10 @@ async def on_run(client, message):
     query.set('autopilot','True')
     await message.reply('AutoPilot On')
 
+@Client.on_message(filters.private & filters.user(admin) & filters.regex('/addcredit_'))
+async def add_credit(client, message):
+    user = message.text.split('_')[1]
+    amount = message.text.split('_')[2]
+
+    query.hset(user, 'credit', int(amount))
+    await message.reply(f'added {amount} to {user}')
