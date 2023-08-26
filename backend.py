@@ -66,7 +66,6 @@ async def task_run(client,message):
             else : prompt_index = 1
 
             print(f'doing task : USER[{user}], STYLE[{style}], PHOTO[{photo}], GENDER[{gender}]')
-            print('sleep for 5 sec')
 
             try:
                 r = generate_image(
@@ -89,6 +88,7 @@ async def task_run(client,message):
             except Exception as error:
                 print(error)
 
+            print('sleep for 5 sec')
             time.sleep(5)
             # await message.reply('done task ' + task)
 
