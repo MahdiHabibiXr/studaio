@@ -10,11 +10,11 @@ plugins = dict(
     root = "plugins"
 )
 
-# bot = Client('mahdi',api_id=863373,api_hash='c9f8495ddd20615835d3fd073233a3f6',plugins=plugins )
-bot = Client(
-    'mahdi',
-    plugins=plugins
-    )
+bot = Client('mahdi',api_id=863373,api_hash='c9f8495ddd20615835d3fd073233a3f6',plugins=plugins )
+# bot = Client(
+#     'mahdi',
+#     plugins=plugins
+#     )
 
 
 #/START
@@ -245,7 +245,7 @@ async def imagine(client, message):
     style = message.text.replace('/imagine', '')
     style = style.replace('_','')
     valid_styles = ['1','2','3','4','5','6']
-    
+
     if(style not in valid_styles):
         await message.reply('استایل ورودی معتبر نیست!')
         return
