@@ -28,6 +28,7 @@ async def set_url(client, message):
 @Client.on_message(filters.private & filters.user(admin) & filters.command('users'))
 async def set_active(client, message):
     users = query.keys()
+    staudaio_users = query.lrange('studaio_users',0,-1)
     count = len(users)
     actives = 0
     for user in users:
@@ -36,7 +37,8 @@ async def set_active(client, message):
                 actives = actives + 1
         except :
             pass
-    await message.reply('all users count : ' + str(count) + '\nall active users : ' + str(actives))
+    await message.reply(f'all stduaio users table {len(staudaio_users)}')
+    await message.reply('all records count : ' + str(count) + '\nall active users : ' + str(actives))
 
 @Client.on_message(filters.private & filters.user(admin) & filters.command('off_run'))
 async def off_run(client, message):
@@ -55,3 +57,9 @@ async def add_credit(client, message):
 
     query.hset(user, 'credit', int(amount))
     await message.reply(f'added {amount} to {user}')
+
+@Client.on_message(filters.private & filters.user(admin) & filters.regex('/batchsize_'))
+async def changeBatchSize(client, message):
+    amount = message.text.split('_')[1]
+    query.set('batch', int(amount))
+    await message.reply(f'batch size now {amount}')

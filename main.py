@@ -28,6 +28,7 @@ async def start_bot(client, message):
 
     #Add new user to db
     if(query.hgetall(chat_id) == {}):
+        query.lpush('studaio_users', chat_id)
         query.hset(chat_id,'name', message.from_user.first_name)
         query.hset(chat_id,'username',message.from_user.username)
         query.hset(chat_id,'active', 'False')

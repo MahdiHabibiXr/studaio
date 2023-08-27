@@ -29,8 +29,8 @@ styles = [
         '1 woman, upper body, portrait, black_hair, wavy hair, blue eyes, black turtleneck sweater, depth of field, outdoors, perfect face,looking at viewer, face focus, torso'
     ],#4
     [
-        'RAW photo,a portrait photo of a man wearing a business suit,full face visible,low angle, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3',
-        'RAW photo,a portrait photo of a woman wearing a business suit,full face visible,low angle, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3'
+        'RAW photo,a portrait photo of a man wearing a business suit,full face visible,upper body, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3',
+        'RAW photo,a portrait photo of a woman wearing a business suit,full face visible,upper body, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3'
     ],#5
     [
         'high quality, face portrait photo of 30 y.o european man, wearing white shirt, serious face, detailed face, skin pores, cinematic shot, dramatic lighting',
@@ -73,7 +73,7 @@ async def task_run(client,message):
                     image_input = photo,
                     negative_prompt = 'no face, half face, invisible face, crop face, nsfw',
                     output_folder= 'outputdata/',
-                    batch_size= 1,
+                    batch_size= query.get('batch'),
                     enable_roop= True,
                     enable_upscale= False,
                     step=25
@@ -82,7 +82,7 @@ async def task_run(client,message):
                 for i in r :
                     query.hset('images', 'user', user)
                     query.hset('images', 'photo', i)
-
+                    print('Done Task, this is photo' + i)
                     await client.send_photo(user, i)
 
             except Exception as error:
