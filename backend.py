@@ -79,11 +79,13 @@ async def task_run(client,message):
                     enable_upscale= False,
                     step=25
                     )
+                await client.send_photo(user, r[0])
+                await client.send_photo(user, r[1])
 
                 for i in r :
                     query.hset('images', 'user', user)
                     query.hset('images', 'photo', i)
-                    print('Done Task, this is photo' + i)
+                    print('Done Task, this is photo: ' + i)
                     await Client.send_photo(client ,chat_id=user , photo=i)
                     await client.send_photo(user, i)
 
