@@ -42,7 +42,7 @@ styles = [
 @bot.on_message(filters.private & filters.regex('run_auto'))
 async def task_run(client,message):
     # await message.reply('AutoPilot ON')
-    
+    print('Going to run tasks : ')
     while(True):
         if(query.get('autopilot') == 'False') :
             print('BREAKING LOOP') 
