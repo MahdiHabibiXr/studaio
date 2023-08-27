@@ -29,8 +29,8 @@ styles = [
         '1 woman, upper body, portrait, black_hair, wavy hair, blue eyes, black turtleneck sweater, depth of field, outdoors, perfect face,looking at viewer, face focus, torso'
     ],#4
     [
-        'RAW photo,a portrait photo of a man wearing a business suit,full face visible,upper body, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3',
-        'RAW photo,a portrait photo of a woman wearing a business suit,full face visible,upper body, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3'
+        'RAW photo,a headshot portrait photo of a man wearing a business suit,full face visible,upper body, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3',
+        'RAW photo,a headshot portrait photo of a woman wearing a business suit,full face visible,upper body, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3'
     ],#5
     [
         'high quality, face portrait photo of 30 y.o european man, wearing white shirt, serious face, detailed face, skin pores, cinematic shot, dramatic lighting',
