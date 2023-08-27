@@ -66,6 +66,7 @@ async def task_run(client,message):
             else : prompt_index = 1
 
             print(f'doing task : USER[{user}], STYLE[{style}], PHOTO[{photo}], GENDER[{gender}]')
+            prmpt = styles[int(style) - 1][prompt_index]
 
             try:
                 r = generate_image(
@@ -73,7 +74,7 @@ async def task_run(client,message):
                     image_input = photo,
                     negative_prompt = 'no face, half face, invisible face, crop face, nsfw',
                     output_folder= 'outputdata/',
-                    batch_size= query.get('batch'),
+                    batch_size= int(query.get('batch')),
                     enable_roop= True,
                     enable_upscale= False,
                     step=25
@@ -83,6 +84,7 @@ async def task_run(client,message):
                     query.hset('images', 'user', user)
                     query.hset('images', 'photo', i)
                     print('Done Task, this is photo' + i)
+                    await Client.send_photo(client ,chat_id=user , photo=i)
                     await client.send_photo(user, i)
 
             except Exception as error:
