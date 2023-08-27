@@ -49,7 +49,7 @@ async def task_run(client,message):
             print('BREAKING LOOP') 
             break
 
-        task = query.rpop('tasks')
+        task = query.rpop('tasks') #todo bring it to tghe last part of doin tasks
 
         if(task != None):
 
@@ -61,7 +61,6 @@ async def task_run(client,message):
             # photo = task[3] +':'+ task[4]
 
             gender = query.hget(user,'gender')
-            query.hset(user,'progress', 'False')
 
             if(gender == 'man'): prompt_index = 0
             else : prompt_index = 1
@@ -80,16 +79,18 @@ async def task_run(client,message):
                     enable_upscale= False,
                     step=25
                     )
-                await client.send_photo(user, r[0], caption = '0')
-                client.send_photo(user, r[1], caption = '1')
-                await message.reply(f'Dont the tasks, this is the photo : {r[0]}')
+                # await client.send_photo(user, r[0], caption = '0')
+                # client.send_photo(user, r[1], caption = '1')
+                # await message.reply(f'Dont the tasks, this is the photo : {r[0]}')
 
                 for i in r :
                     query.hset('images', 'user', user)
                     query.hset('images', 'photo', i)
                     print('Done Task, this is photo: ' + i)
-                    await Client.send_photo(client ,chat_id=user , photo=i)
-                    await client.send_photo(user, i)
+                    await Client.send_photo(client ,chat_id=user , photo=i, caption='ساخته شده با @studaiobot')
+                    # await client.send_photo(user, i)
+
+                query.hset(user,'progress', 'False')
 
             except Exception as error:
                 print(error)
