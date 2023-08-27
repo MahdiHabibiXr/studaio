@@ -79,8 +79,9 @@ async def task_run(client,message):
                     enable_upscale= False,
                     step=25
                     )
-                await client.send_photo(user, r[0])
-                await client.send_photo(user, r[1])
+                await client.send_photo(user, r[0], caption = '0')
+                await client.send_photo(user, r[1], caption = '1')
+                await client.reply(f'Dont the tasks, this is the photo : {r[0]}')
 
                 for i in r :
                     query.hset('images', 'user', user)
@@ -91,6 +92,7 @@ async def task_run(client,message):
 
             except Exception as error:
                 print(error)
+                
             print('=-=-=-=-=-=-=-=-=')
             # print('sleep for 5 sec')
             # time.sleep(5)
