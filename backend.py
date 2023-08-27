@@ -43,6 +43,7 @@ styles = [
 async def task_run(client,message):
     # await message.reply('AutoPilot ON')
     print('Going to run tasks : ')
+
     while(True):
         if(query.get('autopilot') == 'False') :
             print('BREAKING LOOP') 
@@ -80,8 +81,8 @@ async def task_run(client,message):
                     step=25
                     )
                 await client.send_photo(user, r[0], caption = '0')
-                await client.send_photo(user, r[1], caption = '1')
-                await client.reply(f'Dont the tasks, this is the photo : {r[0]}')
+                client.send_photo(user, r[1], caption = '1')
+                await message.reply(f'Dont the tasks, this is the photo : {r[0]}')
 
                 for i in r :
                     query.hset('images', 'user', user)
@@ -92,7 +93,7 @@ async def task_run(client,message):
 
             except Exception as error:
                 print(error)
-                
+
             print('=-=-=-=-=-=-=-=-=')
             # print('sleep for 5 sec')
             # time.sleep(5)
