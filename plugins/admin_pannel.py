@@ -79,4 +79,4 @@ async def getOutputs(client,message):
     count = len(images)
 
 
-    await message.reply()
+    await message.reply(f'all generated images count : {count}')
