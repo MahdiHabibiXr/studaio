@@ -73,7 +73,7 @@ async def task_run(client,message):
                     styles[int(style) -1][prompt_index], #prompte
                     image_input = photo,
                     negative_prompt = 'no face, half face, invisible face, crop face, nsfw',
-                    output_folder= 'outputdata/user/',
+                    output_folder= f'outputdata/{user}/',
                     batch_size= int(query.get('batch')),
                     enable_roop= True,
                     enable_upscale= False,

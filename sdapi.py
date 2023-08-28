@@ -31,7 +31,9 @@ def generate_image(prompt, image_input= '',negative_prompt = 'NSFW, no face, inv
 
     file_input = image_input                             # the face to swap
     filefolderpath = output_folder
-
+    if(not os.path.exists(filefolderpath)):
+        os.makedirs(filefolderpath)
+        
     # # convert input and reference files to base64
     if(enable_roop):
         file_input_base64 = image_to_base64(file_input)
@@ -97,7 +99,7 @@ def generate_image(prompt, image_input= '',negative_prompt = 'NSFW, no face, inv
         current_date = today.strftime('%Y-%m-%d')
         current_time = time.strftime('%H-%M-%S')
 
-        file_output = filefolderpath + 'output_' + current_date + '_' + current_time + str(counter) +'_.png'
+        file_output = filefolderpath + 'output_' + current_date + '_' + current_time + '_' + str(counter) +'.png'
         print(f'saving {file_output}')
 
         image.save(file_output)
