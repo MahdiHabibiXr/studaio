@@ -63,3 +63,20 @@ async def changeBatchSize(client, message):
     amount = message.text.split('_')[1]
     query.set('batch', int(amount))
     await message.reply(f'batch size now {amount}')
+
+@Client.on_message(filters.private & filters.user(admin) & filters.command('/invcodes_report'))
+async def invitescodeReport(client, message):
+    invcodes = query.hgetall('inv_codes')
+    msg = ''
+    for code in invcodes:
+        msg = msg + code + '\n'
+
+    await message.reply(msg)
+
+@Client.on_message(filters.private & filters.user(admin) & filters.regex('/get_images'))
+async def getOutputs(client,message):
+    images = query.lrange('outputs', 0 , -1)
+    count = len(images)
+
+
+    await message.reply()

@@ -84,8 +84,9 @@ async def task_run(client,message):
                 # await message.reply(f'Dont the tasks, this is the photo : {r[0]}')
 
                 for i in r :
-                    query.hset('images', 'user', user)
-                    query.hset('images', 'photo', i)
+                    # query.hset('images', 'user', user)
+                    # query.hset('images', 'photo', i)
+                    query.lpush('outputs',f'{user}:{style}:{photo}:{gender}:{i}')
                     print('Done Task, this is photo: ' + i)
                     await Client.send_photo(client ,chat_id=user , photo=i, caption='ساخته شده با @studaiobot')
                     # await client.send_photo(user, i)
