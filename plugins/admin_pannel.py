@@ -67,11 +67,8 @@ async def changeBatchSize(client, message):
 @Client.on_message(filters.private & filters.user(admin) & filters.command('/invcodes_report'))
 async def invitescodeReport(client, message):
     invcodes = query.hgetall('inv_codes')
-    msg = ''
-    for code in invcodes:
-        msg = msg + code + '\n'
 
-    await message.reply(msg)
+    await message.reply(invcodes)
 
 @Client.on_message(filters.private & filters.user(admin) & filters.regex('/get_images'))
 async def getOutputs(client,message):
