@@ -71,7 +71,7 @@ async def invitescodeReport(client, message):
     for code in invcodes:
         addition = f'{code} : {invcodes[code]}\n'
         msg = msg + addition
-    await message.reply(invcodes)
+    await message.reply(msg)
 
 @Client.on_message(filters.private & filters.user(admin) & filters.regex('/get_images'))
 async def getOutputs(client,message):
