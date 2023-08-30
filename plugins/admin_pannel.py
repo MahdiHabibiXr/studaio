@@ -73,6 +73,11 @@ async def invitescodeReport(client, message):
         msg = msg + addition
     await message.reply(msg)
 
+@Client.on_message(filters.private & filters.user(admin) & filters.regex('get_file_id'))
+async def getFileId(client, message):
+    await message.reply(message.photo.file.id)
+
+
 @Client.on_message(filters.private & filters.user(admin) & filters.regex('/get_images'))
 async def getOutputs(client,message):
     images = query.lrange('outputs', 0 , -1)
