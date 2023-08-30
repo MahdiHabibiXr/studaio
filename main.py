@@ -63,7 +63,7 @@ async def start_bot(client, message):
     else:
         #check if user is Activated
         if(query.hget(chat_id, 'active') == 'True'):
-            msg = f'''سلام **@{query.hget(chat_id, "username")}** 👋
+            msg = f'''سلام **{query.hget(chat_id, "name")}** 👋
 خوش برگشتی به ربات. برای ادامه از لیست زیر یه دستور رو کلیک کن😇
 
 🔸 تنظیم عکس ورودی جدید : /set_image
@@ -247,7 +247,7 @@ async def newImage(client, message):
 @bot.on_message(filters.private & filters.photo)
 async def savePhoto(client, message):
     chat_id = message.chat.id
-    
+
     if(chat_id == admin):
         await message.reply(message.photo.file_id)
 
