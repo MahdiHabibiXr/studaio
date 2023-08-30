@@ -247,9 +247,10 @@ async def newImage(client, message):
 @bot.on_message(filters.private & filters.photo)
 async def savePhoto(client, message):
     chat_id = message.chat.id
-    if(chat_id == admin)
+    
+    if(chat_id == admin):
         await message.reply(message.photo.file_id)
-        
+
     if(message.from_user.is_bot == False) : 
 
         # if(message.from_user._ == 'User') : print('yes userrrr')
