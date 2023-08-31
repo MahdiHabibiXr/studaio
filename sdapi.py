@@ -22,7 +22,7 @@ def save_encoded_image(b64_image, output_path):
         f.write(base64.b64decode(b64_image))
         f.flush()
         f.close()
-
+ 
 
 def generate_image(prompt, image_input= '',negative_prompt = 'NSFW, no face, invisible face', batch_size = 1, enable_roop = True, output_folder = 'outputdata/', enable_upscale = False, step = 25):
     # negative_prompt = 'NSFW, no face, invisible face'
