@@ -14,7 +14,7 @@ print(type(users))
 users.reverse()
 outputs.reverse()
 for u in users:
-    try :
+    try : 
 
         u = u.split('|')
         id = u[0]
