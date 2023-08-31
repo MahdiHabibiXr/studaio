@@ -89,13 +89,12 @@ async def getOutputs(client,message):
 @Client.on_message(filters.private & filters.user(admin) & filters.regex('/check_images'))
 async def getimgsss(client, message):
     users = query.lrange('studaio_users', 0, -1)
-    errors = []
+    # errors = []
     for u in users:
-        photo = query.hget(users, 'photo')
+        photo = query.hget(u, 'photo')
         if(photo != None):
             try:
                 await client.send_photo('449720290', photo)
                 
             except Exception as error:
-                errors.append(u)
                 await message.reply(f'{u} | ERROR ==> {error}')
