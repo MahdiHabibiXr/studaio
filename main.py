@@ -6,6 +6,8 @@ from plugins.tasks import task1,task2
 from pyromod.helpers import ikb, kb, array_chunk
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from celery import Celery
+import os
+
 plugins = dict(
     root = "plugins"
 )
@@ -27,7 +29,8 @@ async def start_bot(client, message):
     chat_id = message.chat.id
 
     #Add new user to db
-    if(query.hgetall(chat_id) == {}):
+    if(chat_id not in query.lrange('studaio_users', 0, -1)):
+        
         query.lpush('studaio_users', chat_id)
         query.hset(chat_id,'name', message.from_user.first_name)
         query.hset(chat_id,'username',message.from_user.username)
@@ -189,7 +192,7 @@ async def newImage(client, message):
     #check if user is active!!!!
     if(query.hget(chat_id, 'active') == 'True'):
         #is user submitted he/she's own photo?
-        if(query.hget(chat_id, 'photo') != None):
+        if((query.hget(chat_id, 'photo') != None) and (query.hget(chat_id, 'photo') != '')):
             #submitted photo before
 #             msg = '''
 # ☺️خب حالا وقت ساختنه
