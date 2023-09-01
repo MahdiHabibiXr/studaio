@@ -29,8 +29,8 @@ async def start_bot(client, message):
     chat_id = message.chat.id
 
     #Add new user to db
-    if(chat_id not in query.lrange('studaio_users', 0, -1)):
-        
+    if(str(chat_id) not in query.lrange('studaio_users', 0, -1)):
+
         query.lpush('studaio_users', chat_id)
         query.hset(chat_id,'name', message.from_user.first_name)
         query.hset(chat_id,'username',message.from_user.username)
