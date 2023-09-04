@@ -355,7 +355,7 @@ async def imagine(client, message):
                 photo = query.hget(chat_id, 'photo')
                 query.lpush('tasks', f'imagine:{chat_id}:{style}:{photo}')       #add new task to task queue
                 query.hset(chat_id, 'credit', str(credits-1))                    #decrease credits 
-
+                query.hset(chat_id, 'style', style)
                 await client.send_photo(
                     admin,
                     photo,
