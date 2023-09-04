@@ -88,7 +88,7 @@ async def task_run(client,message):
                     # query.hset('images', 'photo', i)
                     query.lpush('outputs',f'{user}:{style}:{photo}:{gender}:{i}')
                     print('Done Task, this is photo: ' + i)
-                    await Client.send_photo(client ,chat_id=user , photo=i, caption='ساخته شده با @studaiobot')
+                    await Client.send_photo(client ,chat_id=int(user) , photo=i, caption='ساخته شده با @studaiobot')
                     # await client.send_photo(user, i)
 
                 query.hset(user,'progress', 'False')

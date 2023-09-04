@@ -13,15 +13,15 @@ async def sendMessageToAll(client, message):
             try:
                 name = query.hget(user, 'name') 
                 await client.send_message(user, f'کاربر عزیز {name} \n'+ msg)
-                message.reply(f'sent message to {user} : {name}')
+                await message.reply(f'sent message to {user} : {name}')
 
             except Exception as error :
-                message.reply(('[ERROR] : ' + error))
+                await message.reply(('[ERROR] : ' + error))
 
     else:
         try :
             name = query.hget(target, 'name')
             await client.send_message(target, f'کاربر عزیز {name} \n' + msg)
-            message.reply(f'sent message to {target} : {name}')
+            await message.reply(f'sent message to {target} : {name}')
         except Exception as error :
-            message.reply('[ERROR] : ' + error)
+            await message.reply('[ERROR] : ' + error)
