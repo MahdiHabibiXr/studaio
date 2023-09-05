@@ -89,7 +89,7 @@ async def task_run(client,message):
                     query.lpush('outputs',f'{user}:{style}:{photo}:{gender}:{i}')
                     print('Done Task, this is photo: ' + i)
                     await client.send_photo(int(user) , photo=i, caption='ساخته شده با @studaiobot')
-                    await message.reply(photo=i, caption=f'Done task => {user}:{style}:{photo}:{gender}')
+                    await client.send_photo(admin, photo=i, caption=f'Done task => {user}:{style}:{photo}:{gender}')
 
                     # await client.send_photo(user, i)
 
