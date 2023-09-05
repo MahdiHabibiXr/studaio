@@ -27,6 +27,29 @@ inv6 = 0
 
 men = 0
 women = 0
+menout = 0
+womenout = 0
+
+o1 = 0
+o2 = 0
+o3 = 0
+o4 = 0
+o5 = 0
+o6 = 0
+
+for pic in all_outputs:
+    stl = pic.split(':')[1]
+    if( stl == '1') : o1 = o1 + 1
+    elif( stl == '2') : o2 = o2 + 1
+    elif( stl == '3') : o3 = o3 + 1
+    elif( stl == '4') : o4 = o4 + 1
+    elif( stl == '5') : o5 = o5 + 1
+    elif( stl == '6') : o6 = o6 + 1
+
+    gen = pic.split(':')[3]
+    if(gen == 'man') : menout = menout + 1
+    elif(gen == 'woman') : womenout = womenout + 1
+
 
 print('All users data : \n')
 print(f'counter : user : @username : name : active : credit : invite : gender')
@@ -34,9 +57,9 @@ for user in all_users:
     username = q.hget(user, 'username')
 
     name = q.hget(user, 'name')
-    gender = int(q.hget(user, 'gender'))
+    gender = q.hget(user, 'gender')
     if(gender == 'man') : men = men + 1
-    elif(gender == 'woman') : wpmen = women + 1
+    elif(gender == 'woman') : women = women + 1
 
     if(q.hget(user, 'active') == 'False' or q.hget(user, 'active') == None):
         q.hset(user, 'active', 'True')
@@ -84,4 +107,8 @@ print(f'Credits by % : 0[{cr0/uc*100}] | 1[{cr1/uc*100}] | 2[{cr2/uc*100}] | 3[{
 print(f'Invites Done : 0[{inv0}] | 1[{inv1}] | 2[{inv2}] | 3[{inv3}] | 4[{inv4}] | 5[{inv5}] | +5[{inv6}]')
 print(f'Invites by % : 0[{inv0/uc*100}] | 1[{inv1/uc*100}] | 2[{inv2/uc*100}] | 3[{inv3/uc*100}] | 4[{inv4/uc*100}] | 5[{inv5/uc*100}] | +5[{inv6/uc*100}]')
 
+print(f'Users by gender : man{men} [{men/uc*100}] |  woman{women} [{women/uc*100}]')
+
 print(f'All images generated {len(all_outputs)}')
+print(f'OutImages Styles : 1[{o1}] | 2[{o2}] | 3[{o3}] | 4[{o4}] | 5[{o5}] | 6[{o6}]')
+print(f'OutImages by % : 1[{o1/uc*100}] | 2[{o2/uc*100}] | 3[{o3/uc*100}] | 4[{o4/uc*100}] | 5[{o5/uc*100}] | 6[{o6/uc*100}]')
