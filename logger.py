@@ -105,10 +105,10 @@ print(f'Credits Used : 0[{cr0}] | 1[{cr1}] | 2[{cr2}] | 3[{cr3}] | 4[{cr4}] | 5[
 print(f'Credits by % : 0[{round(cr0/uc*100)}] | 1[{round(cr1/uc*100)}] | 2[{round(cr2/uc*100)}] | 3[{round(cr3/uc*100)}] | 4[{round(cr4/uc*100)}] | 5[{round(cr5/uc*100)}] | 6[{round(cr6/uc*100)}] | 7[{round(cr7/uc*100)}] | 8[{round(cr8/uc*100)}] | 9[{round(cr9/uc*100)}] |  10[{round(cr10/uc*100)}] |  +10[{round(cr11/uc*100)}]')
 
 print(f'Invites Done : 0[{inv0}] | 1[{inv1}] | 2[{inv2}] | 3[{inv3}] | 4[{inv4}] | 5[{inv5}] | +5[{inv6}]')
-print(f'Invites by % : 0[round({inv0/uc*100})] | 1[round({inv1/uc*100})] | 2[round({inv2/uc*100})] | 3[round({inv3/uc*100})] | 4[round({inv4/uc*100})] | 5[round({inv5/uc*100})] | +5[round({inv6/uc*100})]')
+print(f'Invites by % : 0[{round(inv0/uc*100)}] | 1[{round(inv1/uc*100)}] | 2[{round(inv2/uc*100)}] | 3[{round(inv3/uc*100)}] | 4[{round(inv4/uc*100)}] | 5[{round(inv5/uc*100)}] | +5[{round(inv6/uc*100)}]')
 
 print(f'Users by gender : man{men} [{round(men/uc*100)}] |  woman{women} [{round(women/uc*100)}]')
 
 print(f'All images generated {len(all_outputs)}')
 print(f'OutImages Styles : 1[{o1}] | 2[{o2}] | 3[{o3}] | 4[{o4}] | 5[{o5}] | 6[{o6}]')
-print(f'OutImages by % : 1[round({o1/uc*100})] | 2[{o2/uc*100})] | 3[{o3/uc*100})] | 4[{o4/uc*100})] | 5[{o5/uc*100})] | 6[{o6/uc*100})]')
+print(f'OutImages by % : 1[{round(o1/uc*100)}] | 2[{round(o2/uc*100)}] | 3[{round(o3/uc*100)}] | 4[{round(o4/uc*100)}] | 5[{round(o5/uc*100)}] | 6[{round(o6/uc*100)}]')
