@@ -1,7 +1,8 @@
-pyrogram
+https://github.com/KurimuzonAkuma/pyrogram/archive/dev.zip
 redis
 pyromod
 requests
 celery
 pillow
 tgcrypto
+# psycopg2

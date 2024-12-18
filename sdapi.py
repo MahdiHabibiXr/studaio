@@ -1,5 +1,4 @@
 from PIL import Image, PngImagePlugin
-import time
 import base64, io, requests, json
 import os
 from datetime import datetime, date
